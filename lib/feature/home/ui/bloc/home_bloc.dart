@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:news_app/core/exception/server_exception.dart';
 import 'package:news_app/core/usecase/usecase.dart';
 import 'package:news_app/feature/home/data/models/top_headline_news_model.dart';
 import 'package:news_app/feature/home/domain/usecase/home_usecase.dart';
@@ -22,8 +23,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(LoadingHomeState());
       topHeadlineNewsModel = await _homeUsecase(NoParams());
       emit(SuccessHomeState(topHeadlineNewsModel));
-    } catch (e) {
-      emit(FailedHomeState(e.toString()));
+    } on ServerException catch (e) {
+      emit(FailedHomeState(e.errorMessage));
     }
   }
 }

@@ -23,14 +23,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
       body: SingleChildScrollView(
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is LoadingHomeState) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is FailedHomeState) {
-              return Center(child: Text(state.errorMessage));
+              return SizedBox(
+                height: 200,
+                child: Center(child: Text(state.errorMessage)),
+              );
             } else if (state is SuccessHomeState) {
               return ListView.builder(
                   physics: const ScrollPhysics(),
