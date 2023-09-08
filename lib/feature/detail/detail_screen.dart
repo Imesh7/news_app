@@ -21,43 +21,45 @@ class DetailScreen extends StatelessWidget {
           children: [
             Image.network(article?.urlToImage ??
                 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg'),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(article!.title ?? ""),
-            SizedBox(
+            Text(
+              article!.title ?? "",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
                 Text(
-                  '${article!.publishedAt!.year}-${article!.publishedAt!.month}-${article!.publishedAt!.day}' ??
-                      "",
-                  style: TextStyle(color: Colors.grey),
+                  '${article!.publishedAt!.year}-${article!.publishedAt!.month}-${article!.publishedAt!.day}',
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text("Author : "),
+                const Text("Author : "),
                 Text(article!.author ?? ""),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Content : "),
+                const Text("Content : "),
                 Flexible(child: Text(article!.content ?? "")),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             GestureDetector(

@@ -29,7 +29,9 @@ class _DetailWebviewState extends State<DetailWebview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Webview"),
+      ),
       body: WebViewWidget(controller: _webViewController!),
     );
   }
